@@ -39,6 +39,7 @@ while True:
             print("CEP não encontrado.")
             continue
         exibir_endereco(dados)
+        historico.append(dados)
     elif opcao == "2":
         if not historico:
             print("Nenhuma busca feita ainda.")

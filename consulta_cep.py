@@ -27,10 +27,13 @@ while True:
     print("1 - Buscar um CEP")
     print("2 - Sair")
     opcao = input("Escolha uma opção: ")
-    
+
     if opcao == "1":
         cep = input("Digite o CEP (só números): ")
         dados = consultar_cep(cep)
+        if dados.get("erro"):
+            print("CEP não encontrado.")
+            continue
         exibir_endereco(dados)
     elif opcao == "2":
         print("Até logo!")

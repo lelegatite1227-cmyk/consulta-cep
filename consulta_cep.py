@@ -19,12 +19,6 @@ def exibir_endereco(dados):
     print("Cidade:", dados["localidade"])
     print("Estado:", dados["uf"])
 while True:
-    if opcao == "1":
-        cep = limpar_cep(input("Digite o CEP (só números): "))
-    if not cep_valido(cep):
-        print("CEP inválido! Digite 8 números, sem espaços ou traços.")
-        continue
-    dados = consultar_cep(cep)
     print("\n=== Consulta de CEP ===")
     print("1 - Buscar um CEP")
     print("2 - Ver histórico de buscas")

@@ -1,5 +1,10 @@
 # consulta_cep.py
 import requests
+def limpar_cep(cep):
+   return cep.replace("-", "").replace(".", "").strip()
+def cep_valido(cep):
+    return cep.isdigit() and len(cep) == 8
+
 def consultar_cep(cep):
     url = f"https://viacep.com.br/ws/{cep}/json/"
     resposta = requests.get(url)
@@ -12,6 +17,12 @@ def exibir_endereco(dados):
     print("Cidade:", dados["localidade"])
     print("Estado:", dados["uf"])
 while True:
+    if opcao == "1":
+        cep = limpar_cep(input("Digite o CEP (só números): "))
+    if not cep_valido(cep):
+        print("CEP inválido! Digite 8 números, sem espaços ou traços.")
+        continue
+    dados = consultar_cep(cep)
     print("\n=== Consulta de CEP ===")
     print("1 - Buscar um CEP")
     print("2 - Sair")
